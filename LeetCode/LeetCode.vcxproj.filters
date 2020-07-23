@@ -16,6 +16,9 @@
     <Filter Include="源文件\Item">
       <UniqueIdentifier>{382fab4b-a701-4111-9e78-a3247a4ac9b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Common">
+      <UniqueIdentifier>{beb32cd2-655b-4956-9754-3913ba5a4423}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LeetCode.cpp">
@@ -24,9 +27,15 @@
     <ClCompile Include="Test001.cpp">
       <Filter>源文件\Item</Filter>
     </ClCompile>
+    <ClCompile Include="ZKTime.cpp">
+      <Filter>源文件\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ZKhead.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ZKTime.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -17,7 +17,26 @@ void Test001_Two_Sum()
 	nums.push_back(15);
 	twoSum(nums, 9);
 }
-vector<int> twoSum(vector<int>& nums, int target) 
+/*
+执行用时：
+936 ms
+内存消耗：
+7.2 MB
+*/
+vector<int> twoSum(vector<int>& nums, int target)
 {
-
+	vector<int>res;
+	for (size_t i = 0; i < nums.capacity(); i++)
+	{
+		for (size_t j = 0; j < nums.capacity(); j++)
+		{
+			if (j == i)continue;
+			if (nums[i] + nums[j] == target)
+			{
+				res.push_back(i);
+				res.push_back(j);
+				return res;
+			}
+		}
+	}
 }

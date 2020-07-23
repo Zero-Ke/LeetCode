@@ -3,8 +3,12 @@
 
 #include <iostream>
 #include"ZKhead.h"
+#include"ZKTime.h"
 int main()
 {
+	ZKTime time;
+	time.ReStart();
 	Test001_Two_Sum();
+	time.Print("Test001_Two_Sum");
     std::cout << "Hello World!\n";
 }
