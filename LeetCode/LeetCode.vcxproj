@@ -151,7 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Test001.cpp" />
     <ClCompile Include="LeetCode.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ZKhead.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
