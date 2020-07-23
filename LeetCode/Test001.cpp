@@ -8,27 +8,26 @@
 所以返回[0, 1]
 */
 vector<int> twoSum(vector<int>& nums, int target);
+vector<int> twoSum1(vector<int>& nums, int target);
+vector<int> twoSum2(vector<int>& nums, int target);
+vector<int> twoSum3(vector<int>& nums, int target);
+//两数之和//https://leetcode-cn.com/problems/two-sum/
 void Test001_Two_Sum()
 {
 	vector<int> nums;
 	nums.push_back(2);
-	nums.push_back(7);
-	nums.push_back(11);
 	nums.push_back(15);
-	twoSum(nums, 9);
+	nums.push_back(11);
+	nums.push_back(7);
+	twoSum2(nums, 9);
 }
-/*
-执行用时：
-936 ms
-内存消耗：
-7.2 MB
-*/
+//暴力法 时间复杂度O(n2)  空间复杂度O(1)
 vector<int> twoSum(vector<int>& nums, int target)
 {
 	vector<int>res;
 	for (size_t i = 0; i < nums.capacity(); i++)
 	{
-		for (size_t j = 0; j < nums.capacity(); j++)
+		for (size_t j = i + 1; j < nums.capacity(); j++)
 		{
 			if (j == i)continue;
 			if (nums[i] + nums[j] == target)
@@ -39,4 +38,76 @@ vector<int> twoSum(vector<int>& nums, int target)
 			}
 		}
 	}
+}
+//排序+双指针 时间复杂度O(nlogn) 空间复杂度O(n)
+vector<int> twoSum1(vector<int>& nums, int target)
+{
+	vector<int> res;
+	vector<int> temp;
+	temp = nums;
+	std::sort(temp.begin(), temp.end());//用最小的和最大的加和
+	int count = nums.size();
+	int m = 0; int n = count - 1;
+	while (m < n)
+	{
+		if (temp[m] + temp[n] > target)
+			n--;
+		else if (temp[m] + temp[n] < target)
+			m++;
+		else
+			break;
+	}
+	if (m < n)
+	{
+		for (size_t i = 0; i < temp.size(); i++)
+		{
+			if (temp[m] == nums[i] || temp[n] == nums[i])
+				res.push_back(i);
+			if (res.size() > 2)return res;
+		}
+	}
+	return res;
+}
+//Hash表 一遍哈希表
+vector<int> twoSum2(vector<int>& nums, int target)
+{
+	unordered_map<int, int> hash;
+	/*
+		这里是Hash表边赋值，边判断Hash[differ]是否存在Index，且Index!=i
+	*/
+	for (int i = 0; i < nums.size(); i++)//和Dictionary类似
+	{
+		int differ = target - nums[i];
+		if (hash[differ] && hash[differ] != i + 1)
+		{
+			return{ i,hash[differ] - 1 };
+		}
+		hash[nums[i]] = i + 1;
+	}
+	return {};
+}
+//Hash表(低配)  两遍哈希表
+vector<int> twoSum3(vector<int>& nums, int target)
+{
+	/*
+	我的想法是先将数据全部拷贝给hashs<nums[i],i>
+	int differ=target-nums[i]
+	然后遍历hashs,求出hashs[differ]的Index,且Index!=i;
+*/
+	vector<int>	res;
+	unordered_map<int, int> hashs;//<nums[i],Index>
+	for (size_t i = 0; i < nums.size(); i++)
+	{
+		hashs[nums[i]] = i;
+	}
+	for (size_t i = 0; i < nums.size(); i++)
+	{
+		if (hashs[target - nums[i]] && hashs[target - nums[i]] != i)
+		{
+			res.push_back(i);
+			res.push_back(hashs[target - nums[i]]);
+			return res;
+		}
+	}
+	return res;
 }
