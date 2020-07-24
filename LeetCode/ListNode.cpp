@@ -2,14 +2,12 @@
 
 ListNode* ListNode::CreateNode(int value)
 {
-	ListNode* head = (ListNode*)malloc(sizeof(ListNode));
+	ListNode* head = new ListNode(value);
 	if (head == NULL)
 	{
 		cout << "空间缓存不足" << endl;
 		return head;
 	}
-	head->value = &value;
-	head->next = NULL;
 	return head;
 }
 void ListNode::InsertNode(int value, int index)
@@ -55,7 +53,7 @@ int ListNode::IndexOf(int value)
 	ListNode* currentNode = (ListNode*)this;
 	while (currentNode)
 	{
-		if (currentNode->value == &value)
+		if (currentNode->val ==value)
 			return i;
 		currentNode = currentNode->next;
 		i++;
@@ -69,9 +67,7 @@ void ListNode::CreateListNode(int* value, int num)
 	for (size_t i = 0; i < num; i++)
 	{
 		currentNode->next = CreateNode(value[i]);
-		if (i == 0)this->next = currentNode->next;
 		currentNode = currentNode->next;//指针移到下一个节点
-
 	}
 }
 
@@ -85,7 +81,6 @@ void ListNode::Dispose()
 		free(current);
 		current = temp;
 	}
-	//this->next = NULL;
 }
 
 ListNode * ListNode::Reverse()

@@ -12,22 +12,43 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2);
 //https://leetcode-cn.com/problems/add-two-numbers
 void Test002_AddTwoNumbers()
 {
-	ListNode *n1 = (ListNode *)malloc(sizeof(ListNode));
-	ListNode *n2 = (ListNode *)malloc(sizeof(ListNode));
-	int num1[3]{ 2,4,6 };
-	int num2[3]{ 5,6,4 };
-	n1->InsertNode(2, 1);
-	n1->InsertNode(4, 2);
-	n1->InsertNode(5, 3);
-	n2->InsertNode(5, 1);
-	n2->InsertNode(6, 2);
-	n2->InsertNode(4, 3);
-	//n1.CreateListNode(num1, 3);
-	//n2.CreateListNode(num2,3);
-	delete(n1);
-	delete(n2);
+	ListNode *n1 = new ListNode(1);
+	ListNode *n2 = new ListNode(1);
+	int num[7]{ 2,3,4,5,6,7,8 };
+	n1->CreateListNode(num, 7);
+	n2->CreateListNode(num, 7);
+	addTwoNumbers(n1, n2);
+	n1->Dispose();
+	n2->Dispose();
 }
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
 {
-	return nullptr;
+	ListNode*res;
+	int i = 0; //原因：342 + 465 = 807
+	int sum = 0; int sum1 = 0; int sum2 = 0;
+	ListNode * currentNode = l1;
+	while (l1)
+	{
+		sum1 += (l1->val)*(pow(10, i));//超出Int长度
+		i++;
+		l1 = l1->next;
+	}
+	i = 0;
+	while (l2)
+	{
+		sum2 += (l2->val)*(pow(10, i));
+		i++;
+		l2 = l2->next;
+	}
+	sum = sum1 + sum2;
+	int temp = sum / 10;
+	res = new ListNode(sum % 10);
+	ListNode *current = res;
+	while (temp != 0)
+	{
+		current->next = new ListNode(temp % 10);
+		temp = temp / 10;
+		current = current->next;
+	}
+	return res;
 }

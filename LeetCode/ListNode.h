@@ -1,12 +1,17 @@
 #pragma once
 //链表
-class ListNode
+struct ListNode
 {
 public:
+	ListNode(int _value)
+	{
+		val = _value;
+		next = NULL;
+	}
 	/*
 		当前节点的值
 	*/
-	int* value;
+	int val;
 	/*
 		下一个节点
 	*/
@@ -15,7 +20,7 @@ public:
 		新建或初始化一个节点
 		value:对应的值
 	*/
-	ListNode * CreateNode(int value);
+	static ListNode * CreateNode(int value);
 	/*
 		向链表中第几个节点后插入一条数据
 		value:节点的值
