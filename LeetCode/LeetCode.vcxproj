@@ -151,11 +151,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ListNode.cpp" />
     <ClCompile Include="Test001.cpp" />
     <ClCompile Include="LeetCode.cpp" />
+    <ClCompile Include="Test002.cpp" />
     <ClCompile Include="ZKTime.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ListNode.h" />
     <ClInclude Include="ZKhead.h" />
     <ClInclude Include="ZKTime.h" />
   </ItemGroup>

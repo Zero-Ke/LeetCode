@@ -8,7 +8,7 @@ int main()
 {
 	ZKTime time;
 	time.ReStart();
-	Test001_Two_Sum();
+	Test002_AddTwoNumbers();
 	time.Print("Test001_Two_Sum");
     std::cout << "Hello World!\n";
 }

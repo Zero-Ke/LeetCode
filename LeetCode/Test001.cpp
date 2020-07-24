@@ -7,7 +7,7 @@
 因为 nums[0] + nums[1] = 2 + 7 = 9
 所以返回[0, 1]
 */
-vector<int> twoSum(vector<int>& nums, int target);
+vector<int> twoSum0(vector<int>& nums, int target);
 vector<int> twoSum1(vector<int>& nums, int target);
 vector<int> twoSum2(vector<int>& nums, int target);
 vector<int> twoSum3(vector<int>& nums, int target);
@@ -22,7 +22,7 @@ void Test001_Two_Sum()
 	twoSum2(nums, 9);
 }
 //暴力法 时间复杂度O(n2)  空间复杂度O(1)
-vector<int> twoSum(vector<int>& nums, int target)
+vector<int> twoSum0(vector<int>& nums, int target)
 {
 	vector<int>res;
 	for (size_t i = 0; i < nums.capacity(); i++)
